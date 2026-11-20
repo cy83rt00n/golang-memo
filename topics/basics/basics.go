@@ -1,26 +1,13 @@
-package main
+package basics
 
 import "fmt"
 
 // Объявление нового типа для лучшей читаемости
 type errorMessages []string
-type message struct {
-	isError   bool
-	isSuccess bool
-	code      int
-	message   string
-}
-type msgPool []message
 
 var errors errorMessages = errorMessages{
 	"Service unavailable",
 	"Invalid request",
-}
-
-var messages msgPool = msgPool{
-	{isError: false, isSuccess: true, code: 101, message: "Completed"},
-	{isError: true, isSuccess: false, code: 201, message: "Method not allowed"},
-	{isError: false, isSuccess: false, code: 301, message: "Debug info"},
 }
 
 // Возврат значений
@@ -71,25 +58,7 @@ func errLogger(message string) func() {
 	return innerF
 }
 
-func logger(msg message) func() {
-	var counter int
-	var trueFn func() = func() {
-		counter++
-		var prefix string
-		if msg.isError {
-			prefix = fmt.Sprintf("Error #%d:", counter)
-		} else if msg.isSuccess {
-			prefix = fmt.Sprintf("Success #%d:", counter)
-		} else {
-			prefix = fmt.Sprintf("Debug #%d:", counter)
-		}
-		fmt.Printf("%s %s\n", prefix, msg.message)
-	}
-
-	return trueFn
-}
-
-func main() {
+func Test() {
 	var arr [3][3][3]int
 	var a int
 
@@ -111,6 +80,7 @@ func main() {
 		},
 	}
 	a = 4
+	fmt.Println("-== Basics ==-")
 
 	switch a + ff() {
 	case 24:
@@ -136,22 +106,10 @@ func main() {
 	// Проверка wapper'а сообщений об ошибках
 	var serverUnavailable func() = errLogger(errors[0])
 	invalidRequest := errLogger(errors[1])
-	writeErrorToLog := logger(messages[1])
-	writeSuccessToLog := logger(messages[0])
-	writeDebugToLog := logger(messages[2])
 	serverUnavailable()
 	serverUnavailable()
 	invalidRequest()
 	serverUnavailable()
 	invalidRequest()
 	serverUnavailable()
-
-	writeDebugToLog()
-	writeErrorToLog()
-	writeSuccessToLog()
-	writeDebugToLog()
-	writeDebugToLog()
-	writeSuccessToLog()
-	writeSuccessToLog()
-	writeErrorToLog()
 }
