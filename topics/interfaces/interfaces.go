@@ -1,9 +1,12 @@
+// Package interfaces демонстрирует определение и реализацию интерфейсов,
+// а также проверку типов через type switch.
 package interfaces
 
 import (
 	"fmt"
 )
 
+// Logable — интерфейс сущности, умеющей печатать себя и менять свой код и текст.
 type Logable interface {
 	setCode(int)
 	setMessage(string)
@@ -29,6 +32,7 @@ func checkType(variable interface{}) {
 	}
 }
 
+// Test — точка входа для демонстрационных запусков пакета interfaces.
 func Test() {
 	dbg := debug{}
 	inf := info{}

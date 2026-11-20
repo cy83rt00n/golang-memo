@@ -1,3 +1,4 @@
+// Package methods демонстрирует методы со значением-приёмником и указателем-приёмником.
 package methods
 
 import (
@@ -44,6 +45,7 @@ func (m *message) setLevel(lv string, code int) {
 	}
 }
 
+// Test — точка входа для демонстрационных запусков пакета methods.
 func Test() {
 	fmt.Println("-== Methods ==-")
 	for _, m := range messages {

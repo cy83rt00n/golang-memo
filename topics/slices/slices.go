@@ -1,3 +1,4 @@
+// Package slices демонстрирует работу со слайсами: срезы, копирование, сортировку и сравнение.
 package slices
 
 import (
@@ -9,6 +10,7 @@ import (
 
 var food []string = []string{"Apple", "Banana", "Chocolate", "Strawberry", "Lemon", "Orange", "Fish"}
 
+// Test — точка входа для демонстрационных запусков пакета slices.
 func Test() {
 	fmt.Println("-==Slices==-")
 

@@ -1,3 +1,4 @@
+// Command lessons последовательно запускает демонстрации всех тем курса.
 package main
 
 import (

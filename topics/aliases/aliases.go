@@ -1,3 +1,4 @@
+// Package aliases демонстрирует объявление именованных и функциональных типов.
 package aliases
 
 import (
@@ -5,9 +6,15 @@ import (
 	"time"
 )
 
+// Message — именованный строковый тип для текста сообщения.
 type Message string
+
+// MessageType — именованный строковый тип для уровня/типа сообщения.
 type MessageType string
+
 type logger func(msg Message, msgType MessageType)
+
+// LogWithCode — функциональный тип логгера, принимающего сообщение, его тип и числовой код.
 type LogWithCode func(msg Message, msgType MessageType, code int)
 
 func printLog() logger {
@@ -19,6 +26,7 @@ func printLog() logger {
 	}
 }
 
+// Logger возвращает логгер LogWithCode с внутренним счётчиком сообщений.
 func Logger() LogWithCode {
 	var counter int = 1
 	return func(msg Message, msgType MessageType, code int) {
@@ -28,6 +36,7 @@ func Logger() LogWithCode {
 	}
 }
 
+// Test — точка входа для демонстрационных запусков пакета aliases.
 func Test() {
 	var log logger = printLog()
 	fmt.Println("-== Aliases ==-")

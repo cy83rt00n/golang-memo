@@ -1,3 +1,4 @@
+// Package maps демонстрирует работу с map.
 package maps
 
 import (
@@ -26,6 +27,7 @@ var logLevels map[string]message = map[string]message{
 	"error":   {code: 203, text: "Error message", isSuccess: false, isError: true},
 }
 
+// Test — точка входа для демонстрационных запусков пакета maps.
 func Test() {
 	fmt.Println("-== Maps ==-")
 	now := time.Now()

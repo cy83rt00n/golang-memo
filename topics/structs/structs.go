@@ -1,3 +1,5 @@
+// Package structs демонстрирует объявление структур и их использование
+// совместно с функциональными типами из пакета aliases.
 package structs
 
 import (
@@ -20,6 +22,7 @@ var messages msgPool = msgPool{
 	{isError: false, isSuccess: false, code: 301, message: "Debug info"},
 }
 
+// MsgSlice — пример экспортируемого слайса строк, используемый в пакете slices.
 var MsgSlice []string = []string{
 	"Message #1",
 	"Message #2",
@@ -31,6 +34,7 @@ var MsgSlice []string = []string{
 	"Message #8",
 }
 
+// Test — точка входа для демонстрационных запусков пакета structs.
 func Test() {
 	var logger aliases.LogWithCode = aliases.Logger()
 

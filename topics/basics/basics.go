@@ -1,3 +1,6 @@
+// Package basics демонстрирует базовые конструкции Go: массивы, функции
+// (рекурсию, вариативные параметры, именованные результаты, функции как
+// параметры) и замыкания.
 package basics
 
 import "fmt"
@@ -58,6 +61,7 @@ func errLogger(message string) func() {
 	return innerF
 }
 
+// Test — точка входа для демонстрационных запусков пакета basics.
 func Test() {
 	var arr [3][3][3]int
 	var a int
